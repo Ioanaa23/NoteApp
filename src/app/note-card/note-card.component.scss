@@ -1,0 +1,82 @@
+@import '../../main-styles.scss';
+
+.note-card-container{
+    position: relative;
+    background: rgb(123, 203, 234);
+    border-radius: 5px;
+
+    box-shadow: 0px 2px 15px 2px rgba($color: purple, $alpha: 0.068);//the shadow is moved 2 px to the bottom
+    //15px is reffering to the blur
+    //the other 2px are reffering to the spread value-how much larger the box shadow is in comparison to the main div
+
+    &:hover{ //sass operator which allows us to nest the hover styling within the class
+        cursor: pointer;
+        box-shadow: 0px 0px 0px 4px rgba($color: rgb(3, 203, 206), $alpha: 0.068);
+        transition: box-shadow 0.2s ease-out;
+
+        .x-button{
+            //when you hover the default opacity becomes 1 therefore the button appears
+            opacity: 1;
+            transform: scale(1);
+            transition-delay: 0.3s;
+        }
+    }
+    .note-card-content{
+        padding: 25px;
+        color: rgb(36, 36, 36);
+        .note-card-title{
+            font-size: 22px;
+            font-weight: bold;
+            color: black; //will think about other colors later
+        }
+
+        .note-card-body{
+            position:relative;
+            color:#555;
+            //the maximum height before it's truncated
+            max-height: 80px;
+            overflow: hidden;
+
+            .fade-out-truncation{
+                position: absolute;
+                pointer-events: none;
+                bottom: 0;
+                height: 50%;
+                width: 100%;
+                background: linear-gradient(to bottom, rgba(rgb(123, 203, 234),0) 0%, rgba(rgb(123, 203, 234),0.8) 50%, rgb(123, 203, 234) 100%);
+            }
+        }
+    }
+}
+
+.x-button{
+    position: absolute;
+    //12px from the top
+    top: 12px;
+
+    //12 from the right
+    right: 12px;
+    height: 34px;
+    width: 34px;
+    background-color: rgb(233, 187, 187);
+    background-image: url('../../assets/delete_icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 4px;
+
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+    
+    //the button is hidden by default
+    opacity: 0;
+    transform: scale(0.35);
+
+    &:hover{
+        background-color: darken(rgb(226, 135, 135), 3%);
+    }
+
+    //on click
+    &:active{
+        background-color: darken(rgb(226, 135, 135), 5%);
+    }
+
+}
